@@ -1,91 +1,316 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang - MageRUN</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tentang Kami - MageRUN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background: rgba(25, 25, 25, 0.95);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 15px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+      border-radius: 50%;
+    }
+
+    .logo h3 {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo small {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #FFD700;
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 4px;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .about-section {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .about-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .about-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #FFD700;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .about-header p {
+      font-size: 1.2rem;
+      color: #70FFAF;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-text h2 {
+      color: #FFD700;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .about-text p {
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #eee;
+    }
+
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .mission, .vision {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 15px;
+      border-left: 4px solid #FFD700;
+    }
+
+    .mission h3, .vision h3 {
+      color: #70FFAF;
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .stat-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 30px 20px;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #FFD700;
+      display: block;
+    }
+
+    .stat-label {
+      color: #70FFAF;
+      font-size: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background-color: #1b1b1b;
+      color: white;
+      padding: 20px 0;
+      margin-top: auto;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Animasi */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsif */
+    @media (max-width: 900px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .mission-vision {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .container {
+        margin: 20px auto;
+      }
+      
+      .about-section {
+        padding: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <i class="fas fa-running fa-2x" style="color: #2E8B57;"></i>
-                    <h1>Mage<span>RUN</span></h1>
-                </a>
-                <nav>
-                    <div class="mobile-menu">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                    <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="tentang.html" class="active">Tentang</a></li>
-                        <li><a href="program.html">Program</a></li>
-                        <li><a href="gallery.html">Galeri</a></li>
-                        <li><a href="event.html">Event</a></li>
-                        <li><a href="kontak.html">Kontak</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="https://cdn-icons-png.flaticon.com/512/857/857418.png" alt="MageRUN Logo">
+      <div>
+        <h3>MageRUN</h3>
+        <small>Jangan Mager, Ayo Lari</small>
+      </div>
+    </div>
 
-    <section class="hero">
-        <div class="container">
-            <h2>Tentang MageRUN</h2>
-            <p>Kenali lebih dalam tentang komunitas pelari terbaik di Indonesia</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html" class="active">Tentang</a></li>
+        <li><a href="program.html">Program</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="event.html">Event</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <section class="about-section">
+      <div class="about-header">
+        <h1>Tentang MageRUN</h1>
+        <p>Mengubah Mager Menjadi Semangat Berlari</p>
+      </div>
+
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Cerita Kami</h2>
+          <p>
+            MageRUN lahir dari semangat untuk mengubah kebiasaan "mager" (malas gerak) 
+            menjadi gaya hidup aktif dan sehat melalui kegiatan lari. Kami percaya bahwa 
+            setiap orang memiliki potensi untuk menjadi pelari yang hebat.
+          </p>
+          <p>
+            Didirikan pada tahun 2023, MageRUN telah berkembang menjadi komunitas lari 
+            terbesar di Indonesia dengan lebih dari 10.000 anggota aktif di seluruh 
+            negeri.
+          </p>
         </div>
+
+        <div class="about-text">
+          <h2>Visi & Misi</h2>
+          <div class="mission-vision">
+            <div class="mission">
+              <h3><i class="fas fa-bullseye"></i> Misi</h3>
+              <p>Menginspirasi masyarakat Indonesia untuk hidup sehat melalui budaya lari yang menyenangkan dan berkelanjutan.</p>
+            </div>
+            <div class="vision">
+              <h3><i class="fas fa-eye"></i> Visi</h3>
+              <p>Menjadi platform komunitas lari terdepan yang mendorong transformasi gaya hidup sehat di Indonesia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">10K+</span>
+          <span class="stat-label">Anggota Aktif</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Event Tahunan</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">25</span>
+          <span class="stat-label">Kota di Indonesia</span>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <section>
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h3>Sejarah MageRUN</h3>
-                    <p>MageRUN didirikan pada tahun 2020 oleh sekelompok pemuda yang peduli dengan gaya hidup sehat. Kami percaya bahwa berlari adalah olahraga yang mudah dilakukan dan memiliki banyak manfaat.</p>
-                    
-                    <h3>Visi Kami</h3>
-                    <p>Menjadi komunitas pelari terdepan yang menginspirasi generasi muda Indonesia untuk hidup aktif dan sehat.</p>
-                    
-                    <h3>Misi Kami</h3>
-                    <ul>
-                        <li>Mendorong masyarakat untuk aktif berolahraga</li>
-                        <li>Membentuk komunitas yang supportive</li>
-                        <li>Menyelenggarakan event lari berkualitas</li>
-                        <li>Memberikan edukasi tentang pentingnya gaya hidup sehat</li>
-                    </ul>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Tim MageRUN">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>MageRUN</h2>
-                    <p>Jangan Mager, Ayo Lari</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Tautan Cepat</h3>
-                    <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="tentang.html">Tentang</a></li>
-                        <li><a href="kontak.html">Kontak</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 MageRUN - Created by Kelompok 1</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <!-- Footer -->
+  <footer>
+    © 2025 - Created by Kelompok 1 
+  </footer>
 </body>
 </html>
