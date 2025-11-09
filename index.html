@@ -4,52 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MageRUN - Jangan Mager, Ayo Lari</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  <link rel="stylesheet" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj1-cACBHlHtGfAuotwi-tx6w3znRgoF347Q&s">
   <style>
-    :root {
-      --primary: #2E8B57;
-      --secondary: #FF6B35;
-      --accent: #1E5A3A;
-      --light: #F8F9FA;
-      --dark: #343A40;
-      --text: #333333;
-      --gray: #6C757D;
-    }
-
+    /* Reset dasar */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background-color: #f5f5f5;
-      color: var(--text);
-      line-height: 1.6;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    /* HEADER */
+    /* Header */
     header {
-      background-color: white;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: rgba(25, 25, 25, 0.95);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 15px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       position: sticky;
       top: 0;
-      z-index: 10000; /* Perbaikan utama agar bisa diklik */
-    }
-
-    .header-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 0;
+      z-index: 10000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     .logo {
@@ -57,400 +42,186 @@
       align-items: center;
     }
 
-    .logo h1 {
-      color: var(--primary);
-      font-size: 1.8rem;
-      margin-left: 10px;
+    .logo img {
+      width: 45px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
 
-    .logo span {
-      color: var(--secondary);
+    .logo h3 {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo small {
+      font-size: 12px;
+      color: #ccc;
     }
 
     nav ul {
-      display: flex;
       list-style: none;
-    }
-
-    nav ul li {
-      margin-left: 25px;
+      display: flex;
+      gap: 25px;
     }
 
     nav ul li a {
       text-decoration: none;
-      color: var(--dark);
+      color: white;
       font-weight: 500;
-      transition: color 0.3s;
+      transition: all 0.3s ease;
     }
 
     nav ul li a:hover,
     nav ul li a.active {
-      color: var(--primary);
+      color: #FFD700;
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 4px;
     }
 
-    .mobile-menu {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    /* HERO */
-    .page-hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-      url('https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 100px 0;
-      text-align: center;
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+        url("https://rm.id/files/konten/berita/ini-9-kantong-parkir-di-gbk-selama-jakarta-running-festival-2025_286476.jpeg") no-repeat center center/cover;
       position: relative;
-      z-index: 1; /* di bawah header */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 40px;
     }
 
-    /* PAGE CONTENT */
-    .page-content {
-      background-color: white;
+    .hero-text {
+      max-width: 700px;
+      background: rgba(255, 255, 255, 0.12);
       padding: 50px;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      margin-top: -50px;
-      position: relative;
-      z-index: 1;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      transform: translateY(0);
+      transition: transform 0.5s ease;
+      animation: fadeIn 1.5s ease-out;
     }
 
-    /* CONTACT */
-    .contact-container {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
+    .hero-text:hover {
+      transform: translateY(-8px);
     }
 
-    .contact-info, .contact-form {
-      flex: 1;
-      min-width: 300px;
+    .hero-text h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #fff;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
     }
 
-    .info-item {
-      display: flex;
-      align-items: flex-start;
-      margin-bottom: 25px;
-    }
-
-    .info-icon {
-      background-color: var(--primary);
-      color: white;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      flex-shrink: 0;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 500;
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      font-size: 1rem;
-    }
-
-    textarea.form-control {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    .btn {
-      display: inline-block;
-      background-color: var(--secondary);
-      color: white;
-      padding: 12px 30px;
-      border-radius: 30px;
-      text-decoration: none;
+    .hero-text h2 {
+      color: #70FFAF;
+      margin-bottom: 15px;
       font-weight: 600;
-      transition: all 0.3s;
-      border: none;
-      cursor: pointer;
     }
 
-    .btn:hover {
-      background-color: var(--primary);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    .hero-text p {
+      color: #eee;
+      margin-bottom: 30px;
+      line-height: 1.7;
+      font-size: 15px;
     }
 
-    /* FOOTER */
-    footer {
-      background-color: var(--dark);
-      color: white;
-      padding: 50px 0 20px;
-    }
-
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 30px;
-      margin-bottom: 40px;
-    }
-
-    .footer-links ul {
-      list-style: none;
-    }
-
-    .footer-links ul li {
-      margin-bottom: 10px;
-    }
-
-    .footer-links ul li a {
-      color: #ddd;
+    .hero-text .btn {
+      background: linear-gradient(45deg, #FFD700, #FFA500);
+      color: #222;
+      padding: 12px 28px;
+      border-radius: 10px;
+      font-weight: bold;
       text-decoration: none;
-      transition: color 0.3s;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4);
     }
 
-    .footer-links ul li a:hover {
-      color: var(--secondary);
+    .hero-text .btn:hover {
+      background: linear-gradient(45deg, #FFC400, #FF8C00);
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(255, 165, 0, 0.5);
     }
 
-    .social-icons {
-      display: flex;
-      gap: 15px;
-    }
-
-    .social-icons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background-color: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      color: white;
-      transition: all 0.3s;
-    }
-
-    .social-icons a:hover {
-      background-color: var(--secondary);
-      transform: translateY(-3px);
-    }
-
-    .copyright {
+    /* Footer */
+    footer {
       text-align: center;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      font-size: 0.9rem;
-      color: #aaa;
+      background-color: #1b1b1b;
+      color: white;
+      padding: 20px 0;
+      margin-top: auto;
+      font-size: 14px;
+      letter-spacing: 0.5px;
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      nav ul {
-        display: none;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background-color: white;
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        z-index: 9999;
+    /* Animasi */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
-
-      nav ul.show {
-        display: flex;
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
+    }
 
-      .mobile-menu {
-        display: block;
-      }
-
-      .event-card {
+    /* Responsif */
+    @media (max-width: 900px) {
+      .hero {
         flex-direction: column;
         text-align: center;
+        padding: 40px 20px;
+      }
+
+      .hero-text {
+        padding: 30px;
+        margin-bottom: 40px;
       }
     }
   </style>
 </head>
-
 <body>
-  <!-- HEADER -->
+  <!-- Header -->
   <header>
-    <div class="container">
-      <div class="header-content">
-        <div class="logo">
-          <i class="fas fa-running fa-2x" style="color: var(--primary);"></i>
-          <h1>Mage<span>RUN</span></h1>
-        </div>
-        <nav>
-          <div class="mobile-menu">
-            <i class="fas fa-bars"></i>
-          </div>
-          <ul>
-            <li><a href="index.html">Beranda</a></li>
-            <li><a href="tentang.html">Tentang</a></li>
-            <li><a href="program.html">Program</a></li>
-            <li><a href="gallery.html">Galeri</a></li>
-            <li><a href="event.html">Event</a></li>
-            <li><a href="kontak.html" class="active">Kontak</a></li>
-          </ul>
-        </nav>
+    <div class="logo">
+      <img src="https://e7.pngegg.com/pngimages/643/63/png-clipart-person-running-running-sport-racing-5k-run-marathon-race-against-time-purple-people-thumbnail.png" alt="MageRUN Logo">
+      <div>
+        <h3>MageRUN</h3>
+        <small>Jangan Mager, Ayo Lari</small>
       </div>
     </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="program.html">Program</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="event.html">Event</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="page-hero">
-    <div class="container">
-      <h2>Hubungi Kami</h2>
-      <p>Jangan ragu untuk menghubungi kami untuk informasi lebih lanjut</p>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Selamat Datang di Website MageRUN</h1>
+      <h2>Ayo ubah rasa malas menjadi semangat!</h2>
+      <p>
+        MageRUN hadir untuk menemani perjalananmu menuju gaya hidup sehat dan aktif.
+        Kami percaya bahwa setiap langkah kecil bisa membawa perubahan besar.
+        Bersama MageRUN, mari tingkatkan semangat, kesehatan, dan kebugaran tubuh!
+      </p>
+      <a href="#" class="btn">Come and join our team!</a>
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section>
-    <div class="container">
-      <div class="page-content">
-        <div class="contact-container">
-          <div class="contact-info">
-            <h3>Informasi Kontak</h3>
-            <p>Silakan hubungi kami melalui informasi di bawah ini atau isi formulir di samping.</p>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-              <div>
-                <h4>Alamat</h4>
-                <p>Stadion Utama Gelora Bung Karno (GBK), Jakarta</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fas fa-envelope"></i></div>
-              <div>
-                <h4>Email</h4>
-                <p>info@magerun.id</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fas fa-phone"></i></div>
-              <div>
-                <h4>Telepon</h4>
-                <p>+62 21 1234 5678</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fas fa-users"></i></div>
-              <div>
-                <h4>Tim Kami</h4>
-                <p>Sidik, Bagas, Farhan, Aden, Nday, Nepal, Denny</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="contact-form">
-            <h3>Kirim Pesan</h3>
-            <form>
-              <div class="form-group">
-                <label for="name">Nama</label>
-                <input type="text" id="name" class="form-control" placeholder="Masukkan nama lengkap">
-              </div>
-
-              <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" class="form-control" placeholder="Masukkan alamat email">
-              </div>
-
-              <div class="form-group">
-                <label for="subject">Subjek</label>
-                <input type="text" id="subject" class="form-control" placeholder="Subjek pesan">
-              </div>
-
-              <div class="form-group">
-                <label for="message">Pesan</label>
-                <textarea id="message" class="form-control" placeholder="Tulis pesan Anda di sini"></textarea>
-              </div>
-
-              <button type="submit" class="btn">Kirim Pesan</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer>
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">
-          <h2>MageRUN</h2>
-          <p>Jangan Mager, Ayo Lari</p>
-          <p>Komunitas pelari muda yang saling mendukung untuk gaya hidup sehat.</p>
-        </div>
-
-        <div class="footer-links">
-          <h3>Tautan Cepat</h3>
-          <ul>
-            <li><a href="index.html">Beranda</a></li>
-            <li><a href="tentang.html">Tentang Kami</a></li>
-            <li><a href="program.html">Program</a></li>
-            <li><a href="event.html">Event</a></li>
-            <li><a href="kontak.html">Kontak</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-social">
-          <h3>Ikuti Kami</h3>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="copyright">
-        <p>&copy; 2025 MageRUN - Created by Kelompok 1</p>
-      </div>
-    </div>
+    © 2025 - Created by Kelompok 1
   </footer>
-
-  <script>
-    // Menu mobile
-    document.querySelector('.mobile-menu').addEventListener('click', function() {
-      document.querySelector('nav ul').classList.toggle('show');
-    });
-
-    // Validasi form sederhana
-    document.querySelector('form').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value;
-
-      if (name && email && subject && message) {
-        alert('Terima kasih! Pesan Anda telah berhasil dikirim.');
-        this.reset();
-      } else {
-        alert('Harap isi semua field yang diperlukan.');
-      }
-    });
-  </script>
 </body>
 </html>
