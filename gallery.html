@@ -1,72 +1,301 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri - MageRUN</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - MageRUN</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: 
+        linear-gradient(135deg, rgba(106, 17, 203, 0.7), rgba(37, 117, 252, 0.7)),
+        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    header {
+      background: rgba(25, 25, 25, 0.95);
+      backdrop-filter: blur(10px);
+      color: white;
+      padding: 15px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 45px;
+      height: 45px;
+      margin-right: 12px;
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+      border-radius: 50%;
+    }
+
+    .logo h3 {
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo small {
+      font-size: 12px;
+      color: #ccc;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #FFD700;
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 4px;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1400px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .gallery-section {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(8px);
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .gallery-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .gallery-header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      color: #FFD700;
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .gallery-header p {
+      font-size: 1.2rem;
+      color: #70FFAF;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+      height: 250px;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      padding: 20px;
+      transform: translateY(100%);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      transform: translateY(0);
+    }
+
+    .gallery-overlay h3 {
+      color: #FFD700;
+      margin-bottom: 8px;
+    }
+
+    .gallery-overlay p {
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      background-color: rgba(27, 27, 27, 0.8);
+      color: white;
+      padding: 20px 0;
+      margin-top: auto;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    /* Animasi */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsif */
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      }
+      
+      .container {
+        margin: 20px auto;
+      }
+      
+      .gallery-section {
+        padding: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="index.html" class="logo">
-                    <i class="fas fa-running fa-2x" style="color: #2E8B57;"></i>
-                    <h1>Mage<span>RUN</span></h1>
-                </a>
-                <nav>
-                    <div class="mobile-menu">
-                        <i class="fas fa-bars"></i>
-                    </div>
-                    <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="tentang.html">Tentang</a></li>
-                        <li><a href="program.html">Program</a></li>
-                        <li><a href="gallery.html" class="active">Galeri</a></li>
-                        <li><a href="event.html">Event</a></li>
-                        <li><a href="kontak.html">Kontak</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </header>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="https://e7.pngegg.com/pngimages/643/63/png-clipart-person-running-running-sport-racing-5k-run-marathon-race-against-time-purple-people-thumbnail.png" alt="MageRUN Logo">
+      <div>
+        <h3>MageRUN</h3>
+        <small>Jangan Mager, Ayo Lari</small>
+      </div>
+    </div>
 
-    <section class="hero">
-        <div class="container">
-            <h2>Galeri</h2>
-            <p>Momen-momen seru bersama MageRUN</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html">Tentang</a></li>
+        <li><a href="program.html">Program</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="event.html">Event</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <section class="gallery-section">
+      <div class="gallery-header">
+        <h1>Gallery MageRUN</h1>
+        <p>Momen berharga dari perjalanan komunitas kami</p>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Marathon Event">
+          <div class="gallery-overlay">
+            <h3>Jakarta Marathon 2024</h3>
+            <p>Peserta MageRUN di finish line</p>
+          </div>
         </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Training Session">
+          <div class="gallery-overlay">
+            <h3>Weekly Training</h3>
+            <p>Sesi latihan rutin di GBK</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1571008887538-b36bb32f4571?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Community Run">
+          <div class="gallery-overlay">
+            <h3>Community Run</h3>
+            <p>Lari bersama anggota komunitas</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1486218119243-13883505764c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Running Technique">
+          <div class="gallery-overlay">
+            <h3>Technique Workshop</h3>
+            <p>Pelatihan teknik lari yang benar</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1502224562085-639556652f33?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Charity Run">
+          <div class="gallery-overlay">
+            <h3>Charity Run</h3>
+            <p>Lari untuk amal bersama</p>
+          </div>
+        </div>
+
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Trail Running">
+          <div class="gallery-overlay">
+            <h3>Trail Adventure</h3>
+            <p>Petualangan lari di alam terbuka</p>
+          </div>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <section>
-        <div class="container">
-            <p>Galeri akan segera hadir. Stay tuned!</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>MageRUN</h2>
-                    <p>Jangan Mager, Ayo Lari</p>
-                </div>
-                <div class="footer-links">
-                    <h3>Tautan Cepat</h3>
-                    <ul>
-                        <li><a href="index.html">Beranda</a></li>
-                        <li><a href="tentang.html">Tentang</a></li>
-                        <li><a href="kontak.html">Kontak</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 MageRUN - Created by Kelompok 1</p>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <!-- Footer -->
+  <footer>
+    © 2025 - Created by Kelompok 1 
+  </footer>
 </body>
 </html>
